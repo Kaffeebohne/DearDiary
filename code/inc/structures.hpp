@@ -71,12 +71,10 @@ namespace Duennschiss
     typedef struct
     {
       // date and time make already up for a unique identifier number
-      // date
-      uint8_t year : 7;
-      uint8_t month : 4;
-      uint8_t day : 5;
+      // year is years since 1970
+      uint16_t date;
       // time as 15 minute offsets from midnight
-      uint8_t timeOff : 8;
+      uint8_t timeOff;
       uint8_t align : 8;
     } T_Timestamp;
 
