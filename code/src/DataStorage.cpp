@@ -24,10 +24,6 @@ DataIO::DataIO(char *dbName, bool createNew)
 
   if (fsize == 0)
   {
-    fclose(this->dbfile);
-    this->dbfile = fopen(this->dbname, "wb");
-    if (this->dbfile == NULL)
-      T1000::kill(T1000::eCouldNotOpenDatabase);
     DataIO::initFile();
   }
   else if (fsize < sizeof(MAGIC))
