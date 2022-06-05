@@ -4,19 +4,26 @@
 
 namespace Duennschiss
 {
+  typedef union
+  {
+    uint32_t i;
+    uint16_t s[2];
+    uint8_t b[4];
+  } UU32;
+
+  typedef union
+  {
+    int32_t i;
+    int16_t s[2];
+    int8_t b[4];
+  } SU32;
+  
   namespace Struct
   {
-#define MAGIC (uint16_t)0x3713
-#define ALL_DAY (uint8_t)0xff
-#define PADING 0
 
-#define NEW_ENTRY(size, type, data) \
-  {                                 \
-    .size = (size),                 \
-    .type = (type),                 \
-    .data = (data),                 \
-    .nxtEntry = NULL                \
-  }
+#define MAGIC (uint16_t)0x1337
+#define ALL_DAY (uint8_t)0xff
+#define PADDING_BYTE 0
 
     enum : uint8_t
     {
@@ -81,6 +88,7 @@ namespace Duennschiss
     typedef struct tagLineEntry
     {
       T_Timestamp timestamp;
+      uint16_t payloadLen;
       T_EntryContainer payload;
     } T_LineEntry;
   };
